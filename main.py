@@ -4,6 +4,11 @@ import streamlit as st
 st.set_page_config(page_title='人相占い')
 st.markdown('#### 人相占い')
 
+def clear_cache():
+    read_data = st.empty()
+
+st.button("Update Program",on_click=clear_cache)
+
 @st.cache_data
 def read_data(file):
     df = pd.read_excel(file)  # index　ナンバー不要　index_col=0
@@ -50,8 +55,5 @@ if parts1 != '--選択してください--':
 else:
     st.stop()
 
-def clear_cache():
-    read_data = st.empty()
 
-st.sidebar.button("Update Program",on_click=clear_cache)
 
